@@ -435,7 +435,9 @@ export class Archiver {
               const { shouldPause, delay } = rateLimiter.recordRateLimit(error);
               const newConcurrency = rateLimiter.getConcurrency();
 
-              console.log(chalk.yellow(`[${completed}/${total}] ⚠ Rate limited: ${summary.title}`));
+              console.log(
+                chalk.yellow(`[${completed}/${total}] ⚠ Rate limited: ${summary.title}`)
+              );
               console.log(
                 chalk.yellow(
                   `  Reducing concurrency to ${newConcurrency}, waiting ${Math.floor(delay / 1000)}s...`
