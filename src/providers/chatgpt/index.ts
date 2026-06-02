@@ -121,7 +121,7 @@ export class ChatGPTProvider extends BaseProvider {
       domain: '.chatgpt.com',
     });
 
-    await page.goto('https://chatgpt.com', { waitUntil: 'networkidle', timeout: 30000 });
+    await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
 
     // Check if we're redirected to login or if we can see user-specific elements
     const url = page.url();
@@ -286,7 +286,7 @@ export class ChatGPTProvider extends BaseProvider {
           console.log('[ChatGPT] Fetching new access token...');
         }
         // Full navigation to establish session
-        await page.goto('https://chatgpt.com', { waitUntil: 'networkidle', timeout: 30000 });
+        await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
         const result = await this.fetchAccessToken(page);
         accessToken = result.token;
       }
@@ -450,7 +450,7 @@ export class ChatGPTProvider extends BaseProvider {
           console.log('[ChatGPT] Fetching new access token...');
         }
         // Full navigation to establish session
-        await page.goto('https://chatgpt.com', { waitUntil: 'networkidle', timeout: 30000 });
+        await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
         const result = await this.fetchAccessToken(page);
         accessToken = result.token;
       }

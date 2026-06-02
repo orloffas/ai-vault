@@ -130,7 +130,7 @@ export class ChatGPTApiProvider extends StrategyBasedProvider {
         if (process.env.DEBUG) {
           console.log('[ChatGPT] Fetching new access token...');
         }
-        await page.goto('https://chatgpt.com', { waitUntil: 'networkidle', timeout: 30000 });
+        await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
         const result = await this.fetchAccessToken(page);
         accessToken = result.token;
       }
@@ -322,7 +322,7 @@ export class ChatGPTApiProvider extends StrategyBasedProvider {
         accessToken = this.config!.accessToken!;
         await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 15000 });
       } else {
-        await page.goto('https://chatgpt.com', { waitUntil: 'networkidle', timeout: 30000 });
+        await page.goto('https://chatgpt.com', { waitUntil: 'domcontentloaded', timeout: 30000 });
         const result = await this.fetchAccessToken(page);
         accessToken = result.token;
       }

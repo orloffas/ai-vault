@@ -220,7 +220,7 @@ export class ClaudeApiProvider extends StrategyBasedProvider {
     });
 
     try {
-      await page.goto('https://claude.ai', { waitUntil: 'networkidle', timeout: 30000 });
+      await page.goto('https://claude.ai', { waitUntil: 'domcontentloaded', timeout: 30000 });
 
       const url = page.url();
       if (url.includes('/login') || url.includes('/auth/')) {

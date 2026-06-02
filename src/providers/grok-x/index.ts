@@ -127,7 +127,7 @@ export class GrokXProvider extends BaseProvider {
 
     try {
       const url = `https://x.com/i/grok/${id}`;
-      await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
       // Check if conversation exists
       const notFound = await page.$('.error-page, [data-testid="error"]');

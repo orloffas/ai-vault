@@ -105,7 +105,7 @@ export class ClaudeProvider extends BaseProvider {
 
     try {
       // Navigate to Claude to establish session
-      await page.goto('https://claude.ai', { waitUntil: 'networkidle', timeout: 30000 });
+      await page.goto('https://claude.ai', { waitUntil: 'domcontentloaded', timeout: 30000 });
 
       // Check if we're redirected to login
       const url = page.url();
@@ -224,7 +224,7 @@ export class ClaudeProvider extends BaseProvider {
 
         await page.getByRole('button', { name: /show more|load more/i }).click();
         // Wait for new items to load; tolerate timeout on slow networks
-        await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => {});
+        await page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {});
       }
 
       // Extract conversation data from DOM
