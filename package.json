@@ -23,6 +23,7 @@
   "homepage": "https://github.com/dotCipher/ai-vault#readme",
   "scripts": {
     "build": "tsc",
+    "postbuild": "bash scripts/sync-runtime.sh",
     "dev": "tsx src/cli.ts",
     "start": "node dist/cli.js",
     "typecheck": "tsc --noEmit",
